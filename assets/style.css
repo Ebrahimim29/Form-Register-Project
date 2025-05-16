@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 25rem;
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+    margin-left: 50vw;
+}
