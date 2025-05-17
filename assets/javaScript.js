@@ -41,19 +41,41 @@ form.addEventListener("submit",function(e) {
 
             people.map((person,index)=>{
                 const li=document.createElement("li");
-                li.innerText=`${index + 1}.${person.name} ${person.family}
-                ایمیل : ${person.email}
-                شغل : ${person.job || "----"}
-                تلفن :${person.phone || "----"}
-                جنسیت :${person.gender || "----"}`;
+
+                // const name=person.name;
+                // const family=person.family;
+                // const job=person.job;
+                // const email=person.email;
+                // const phone=person.phone;
+                // const gender=person.gender;
+
+                //Destructuring Assignment(بازکردن ترکیب): روش بهتر و خلاصه تر نسبت به تعریف متغییر های بالا 
+                const {name,family,email,phone,job,gender}=person;
+
+                li.innerText=`${index + 1}.${name} ${family}
+                ایمیل : ${email}
+                شغل : ${job || "----"}
+                تلفن :${phone || "----"}
+                جنسیت :${gender || "----"}`;
 
                 list.appendChild(li)
             })
             modal.appendChild(list)
             console.log(people);
-            
+           
         }
+        overlay.style.opacity="1";
+        overlay.style.visibility="visible";
+        modal.style.opacity="1";
+        modal.style.visibility="visible";
 
+    })
+    //بستن مدال با کلیک روی پس زمینه
+    overlay.addEventListener("click",()=>{
+        overlay.style.opacity="0";
+        overlay.style.visibility="hidden";
+        modal.style.opacity="0";
+        modal.style.visibility="hidden";
     })
     
     
