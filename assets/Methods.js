@@ -17,8 +17,20 @@
 // items.forEach(item=>item.style.color="blue");
 
 //--Find(): متدی برای یافتن مقدار موردنظر در بین عناصر یک آرایه
-const numbers=[10,5,25,30];
-const found=numbers.find((num)=>{
-    return num>10;
-})
-console.log(found);
+// const numbers=[10,5,25,30];
+// const found=numbers.find((num)=>{
+//     return num>10;
+// })
+// console.log(found);
+
+//--Filter():متدی شبیه به فایند برای جستجو بین عناصر آرایه که خروجی آن صرفا یک آرایه است
+// const numbers1=[3,8,15,20,25];
+// const found1=numbers1.filter((num)=>num>10);
+
+// console.log(found1);
+// found1.forEach((num)=>{
+//     console.log(num*10);
+    
+// })
+
+//--Every():متدی برای سرچ در بین آرایه ها که صرفا خروجی True یا False  دارد

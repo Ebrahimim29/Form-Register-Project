@@ -89,26 +89,66 @@ overlay.addEventListener("click",()=>{
 //پیدا کردن با ایمیل
 document.getElementById("findByEmail").addEventListener("click",()=>{
     const emailToFind = prompt("لطفا ایمیل را وارد نمایید:");
+//Ravesh 1:Find()
     // const person = people.find((p)=>{return p.email ===emailToFind.trim()});
     //حالت تک خطی:
-    const person = people.find(p=> p.email ===emailToFind.trim());
+    // const person = people.find(p=> p.email ===emailToFind.trim());
 
-    if(person){
-        const {name,family,job,phone,gender}=person
-        modal.innerHTML=`
-        <h3>فرد یافت شد:</h3>
-        <p>نام :${name}</p>
-        <p>نام خانوادگی :${family}</p>
-        <p>شغل :${job}</p>
-        <p>شماره تماس :${phone}</p>
-        <p>جنسیت :${gender}</p>`;
-    }else{
-        modal.innerHTML = `<p>فردی با این ایمیل یافت نشد😒</p>`
-    }
+    // if(person){
+    //     const {name,family,job,phone,gender}=person
+    //     modal.innerHTML=`
+    //     <h3>فرد یافت شد:</h3>
+    //     <p>نام :${name}</p>
+    //     <p>نام خانوادگی :${family}</p>
+    //     <p>شغل :${job}</p>
+    //     <p>شماره تماس :${phone}</p>
+    //     <p>جنسیت :${gender}</p>`;
+    // }else{
+    //     modal.innerHTML = `<p>فردی با این ایمیل یافت نشد😒</p>`
+    // }
+
+    //Ravesh 2:Filter()
+    const person = people.filter(p => p.email === emailToFind.trim())
+
+  if (person.length > 0) {
+    modal.innerHTML = `<h3>افراد یافت شده:</h3>`;
+
+    person.forEach(person => {
+      const { name, family, job, phone, gender } = person;
+      modal.innerHTML += `
+      <hr>
+      <p>نام: ${name}</p>
+      <p>نام خانوادگی: ${family}</p>
+      <p>شغل: ${job}</p>
+      <p>شماره تماس: ${phone}</p>
+      <p>جنسیت: ${gender}</p>
+    `;
+    });
+
+  } else {
+    modal.innerHTML = `<p>فردی با این ایمیل یافت نشد.</p>`;
+  }
+
+  
+  overlay.style.opacity="1";
+  overlay.style.visibility="visible";
+  modal.style.opacity="1";
+  modal.style.visibility="visible";
+})
+
+//آیا همه شاغل هستند
+document.getElementById("checkIfAllHaveJob").addEventListener("click",()=>{
+    const allHaveJob = people.every(p=>p.job.trim() !=="");
+    modal.innerHTML = allHaveJob
+    ? "<p>همه افراد دارای شغل هستند✔</p>"
+    : "<p>برخی افراد شغل ثبت نکردند❌</p>";
+
     overlay.style.opacity="1";
     overlay.style.visibility="visible";
     modal.style.opacity="1";
     modal.style.visibility="visible";
 
 })
+
+
 
